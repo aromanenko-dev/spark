@@ -174,8 +174,7 @@ class KinesisSequenceRangeIterator(
         // If the internal iterator still does not have any data, then throw exception
         // and terminate this iterator
         finished = true
-        throw new SparkException(
-          s"Could not read until the end sequence number of the range: $range")
+        logError(s"Could not read until the end sequence number of the range: $range")
       } else {
 
         // Get the record, copy the data into a byte array and remember its sequence number

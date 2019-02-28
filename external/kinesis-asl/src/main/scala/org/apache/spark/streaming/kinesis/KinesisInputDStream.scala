@@ -47,6 +47,8 @@ private[kinesis] class KinesisInputDStream[T: ClassTag](
     val cloudWatchCreds: Option[SparkAWSCredentials]
   ) extends ReceiverInputDStream[T](_ssc) {
 
+  logWarning("Patched Kinesis ASL, v1.0")
+
   private[streaming]
   override def createBlockRDD(time: Time, blockInfos: Seq[ReceivedBlockInfo]): RDD[T] = {
 
